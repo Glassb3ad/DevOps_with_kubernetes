@@ -3,7 +3,7 @@ docker build -t project-v-1 .
 
 
 ## Publish
-docker tag project-v-1 glassb3ad/project-v-1:latest && docker push glassb3ad/project-v-1:latest
+docker build -t project-v-1 glassb3ad/project-v-1:<new tag> && docker push glassb3ad/project-v-1:<new tag>
 
 ## Pull and run
 docker pull  glassb3ad/project-v-1:latest
