@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2025-01-06T11:53:53Z"
+  generation: 1
+  labels:
+    app: log-output
+  name: log-output
+  namespace: default
+  resourceVersion: "4228"
+  uid: 2581f2d6-c5b2-4f0e-91b7-6674aeaa6a04
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: log-output
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: log-output
+    spec:
+      containers:
+      - image: glassb3ad/log-output:1.0
+        imagePullPolicy: IfNotPresent
+        name: log-output
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2025-01-06T11:52:55Z"
+    lastUpdateTime: "2025-01-06T11:52:55Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2025-01-06T11:52:53Z"
+    lastUpdateTime: "2025-01-06T11:52:55Z"
+    message: ReplicaSet "log-output-68bdd8bdb8" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
