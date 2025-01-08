@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loggers
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: loggers
+  template:
+    metadata:
+      labels:
+        app: loggers
+    spec:
+      volumes: # Define volume
+        - name: shared-log
+          emptyDir: {}
+      containers:
+        - name: log-output-writer
+          image: glassb3ad/log-output-writer:1.1
+          volumeMounts: # Mount volume
+            - name: shared-log
+              mountPath: /usr/src/app/files
+        - name: log-output-reader
+          image: glassb3ad/log-output-reader:1.3
+          volumeMounts: # Mount volume
+            - name: shared-log
+              mountPath: /usr/src/app/files
