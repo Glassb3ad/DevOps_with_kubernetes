@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ping-pong
+  name: log-output
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ping-pong
+      app: log-output
   template:
     metadata:
       labels:
-        app: ping-pong
+        app: log-output
     spec:
       volumes:
         - name: shared-ping-pong
           persistentVolumeClaim:
             claimName: ping-pong-claim
       containers:
-        - name: ping-pong
-          image: glassb3ad/ping-pong:1.3
+        - name: log-output
+          image: glassb3ad/log-output:1.3
           volumeMounts:
             - name: shared-ping-pong
               mountPath: /usr/src/app/files
           env:
             - name: PORT
-              value: '3003'
+              value: '3002'
