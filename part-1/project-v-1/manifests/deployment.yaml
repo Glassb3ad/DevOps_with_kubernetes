@@ -18,7 +18,7 @@ spec:
             claimName: project-claim
       containers:
         - name: project-v-1
-          image: glassb3ad/project-v-1:1.2
+          image: glassb3ad/project-v-1:1.4
           volumeMounts:
             - name: project-volume
               mountPath: /usr/src/app/files
