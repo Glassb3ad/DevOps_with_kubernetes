@@ -12,9 +12,16 @@ spec:
       labels:
         app: project-v-1
     spec:
+      volumes:
+        - name: project-volume
+          persistentVolumeClaim:
+            claimName: project-claim
       containers:
         - name: project-v-1
-          image: glassb3ad/project-v-1:1.1
+          image: glassb3ad/project-v-1:1.2
+          volumeMounts:
+            - name: project-volume
+              mountPath: /usr/src/app/files
           env:
-          - name: PORT
-            value: "3002"
+            - name: PORT
+              value: '3002'

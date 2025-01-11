@@ -1,13 +1,18 @@
-## build and run locally
+## build
+
 docker build -t project-v-1 .
 
-
 ## Publish
-docker build -t project-v-1 glassb3ad/project-v-1:<new tag> && docker push glassb3ad/project-v-1:<new tag>
+
+docker build -t project-v-1 . &&
+docker tag project-v-1 glassb3ad/project-v-1:1.2 &&
+docker push glassb3ad/project-v-1:1.2
 
 ## Pull and run
-docker pull  glassb3ad/project-v-1:latest
+
+docker pull glassb3ad/project-v-1:latest
 docker run -p 4000:4000 glassb3ad/project-v-1:latest
 
-## create deployment
-kubectl create deployment project-v-1 --image=glassb3ad/project-v-1
+## Apply kubernetes configs
+
+kubectl apply -f manifests/
