@@ -2,23 +2,24 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: dwk-material-ingress-2
+  namespace: dwk-exercises-namespace
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - http:
-      paths:
-      - path: /pingpong
-        pathType: Prefix
-        backend:
-          service:
-            name: ping-pong
-            port:
-              number: 2346
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: log-output
-            port:
-              number: 2345
+    - http:
+        paths:
+          - path: /pingpong
+            pathType: Prefix
+            backend:
+              service:
+                name: ping-pong
+                port:
+                  number: 2346
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: log-output
+                port:
+                  number: 2345
