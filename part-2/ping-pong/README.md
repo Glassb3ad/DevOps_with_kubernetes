@@ -1,8 +1,8 @@
 ## Build and publish
 
 docker build -t ping-pong . &&
-docker tag ping-pong glassb3ad/ping-pong:1.4 &&
-docker push glassb3ad/ping-pong:1.4
+docker tag ping-pong glassb3ad/ping-pong:1.9 &&
+docker push glassb3ad/ping-pong:1.9
 
 ## Pull and run
 

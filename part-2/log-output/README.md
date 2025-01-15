@@ -1,8 +1,8 @@
 ## Build and Publish
 
 docker build -t log-output . &&
-docker tag log-output glassb3ad/log-output:1.6 &&
-docker push glassb3ad/log-output:1.6
+docker tag log-output glassb3ad/log-output:1.7 &&
+docker push glassb3ad/log-output:1.7
 
 ## Pull and run
 

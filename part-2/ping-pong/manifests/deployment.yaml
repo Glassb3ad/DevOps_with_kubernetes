@@ -13,16 +13,19 @@ spec:
       labels:
         app: ping-pong
     spec:
-      volumes:
-        - name: shared-ping-pong
-          persistentVolumeClaim:
-            claimName: ping-pong-claim
       containers:
         - name: ping-pong
-          image: glassb3ad/ping-pong:1.4
-          volumeMounts:
-            - name: shared-ping-pong
-              mountPath: /usr/src/app/files
+          image: glassb3ad/ping-pong:1.9
           env:
             - name: PORT
               value: '3003'
+            - name: DB_HOST
+              value: 'postgres-0.postgres-service'
+            - name: DB_PORT
+              value: '5432'
+            - name: DB_USER
+              value: 'pingpong'
+            - name: DB_PASSWORD
+              value: 'pingpongpassword'
+            - name: DB_NAME
+              value: 'pingpongdb'
