@@ -30,8 +30,6 @@ const App = () => {
       queryClient.invalidateQueries({ queryKey: ['tasks'] })
     },
   })
-  const input = document.getElementById('new-task')
-
   return (
     <div className="w-100 h-100 min-h-screen content-center justify-items-center bg-slate-200 p-8">
       <h1 className="font-semibold m-4 text-2xl text-sky-800">TODO Application</h1>
@@ -53,7 +51,7 @@ const App = () => {
               <h2 className="font-semibold text-lg text-sky-800">Tasks</h2>
               {!isFetching ?
                 <ul>
-                  {data?.tasks?.map(task => <ListItem todo={task} />)}
+                  {data?.tasks?.map(task => <ListItem todo={task.task} />)}
                 </ul> : "Fetching tasks..."}
             </div>
           </div>

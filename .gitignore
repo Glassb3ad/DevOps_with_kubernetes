@@ -1,3 +1,4 @@
 node_modules
 usr
 part-1/*
+.env

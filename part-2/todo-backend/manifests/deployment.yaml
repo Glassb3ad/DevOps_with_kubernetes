@@ -15,7 +15,10 @@ spec:
     spec:
       containers:
         - name: todo-backend
-          image: glassb3ad/todo-backend:1.0
+          image: glassb3ad/todo-backend:1.2
+          envFrom:
+            - secretRef:
+                name: psql-env
           env:
             - name: PORT
               value: '3002'
