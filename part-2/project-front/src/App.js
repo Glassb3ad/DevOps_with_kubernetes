@@ -6,7 +6,7 @@ import {
   useQueryClient
 } from '@tanstack/react-query'
 
-const API_URL = '/tasks'
+const API_URL = 'http://localhost:4000/tasks'
 const ListItem = ({ todo }) => <li className="py-3 px-4 rounded-lg border bg-white">{todo}</li>
 
 const App = () => {
