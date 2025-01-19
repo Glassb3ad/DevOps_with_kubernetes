@@ -5,8 +5,8 @@ docker build -t todo-backend .
 ## Publish
 
 docker build -t todo-backend . &&
-docker tag todo-backend glassb3ad/todo-backend:1.2 &&
-docker push glassb3ad/todo-backend:1.2
+docker tag todo-backend glassb3ad/todo-backend:1.4 &&
+docker push glassb3ad/todo-backend:1.4
 
 ## Pull and run
 
