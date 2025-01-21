@@ -1,4 +1,7 @@
 node_modules
 usr
 part-1/*
+part-2/*
 .env
+key.txt
+secret.yaml
