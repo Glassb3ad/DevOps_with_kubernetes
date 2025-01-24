@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: log-output-configmap
+  namespace: dwk-exercises-namespace
+data:
+  message: 'Hello you'

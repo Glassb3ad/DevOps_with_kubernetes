@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: log-output
+  namespace: dwk-exercises-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-output
+  template:
+    metadata:
+      labels:
+        app: log-output
+    spec:
+      containers:
+        - name: log-output
+          image: glassb3ad/log-output:1.9
+          env:
+            - name: PORT
+              value: '3002'
+            - name: MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: log-output-configmap
+                  key: message
