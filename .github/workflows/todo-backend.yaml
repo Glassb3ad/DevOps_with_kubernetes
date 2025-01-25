@@ -49,7 +49,7 @@ jobs:
 
       - name: Deploy
         run: |-
-          cd ${{ env.DOCKER_BUILD_PATH }}
+          cd ${{ env.DOCKER_BUILD_PATH }}/manifests
           kustomize edit set image PROJECT/IMAGE=gcr.io/$PROJECT_ID/$IMAGE:$BRANCH-$GITHUB_SHA
           kustomize build . | kubectl apply -f -
           kubectl rollout status deployment $SERVICE
