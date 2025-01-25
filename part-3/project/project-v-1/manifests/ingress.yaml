@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dwk-material-ingress
+  namespace: dwk-project
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /tasks
+            pathType: Prefix
+            backend:
+              service:
+                name: todo-backend
+                port:
+                  number: 80
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: project-v-1
+                port:
+                  number: 80
