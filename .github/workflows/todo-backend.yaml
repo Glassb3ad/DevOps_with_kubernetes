@@ -52,8 +52,8 @@ jobs:
           cd ${{ env.DOCKER_BUILD_PATH }}/manifests
           kustomize edit set image PROJECT/IMAGE=gcr.io/$PROJECT_ID/$IMAGE:$BRANCH-$GITHUB_SHA
           kustomize build . | kubectl apply -f -
-          kubectl rollout status deployment $SERVICE
-          kubectl get services -o wide
+          kubectl rollout status deployment $SERVICE --namespace=dwk-project
+          kubectl get services -o wide --namespace=dwk-project
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
