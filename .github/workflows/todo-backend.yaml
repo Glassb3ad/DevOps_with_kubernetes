@@ -1,7 +1,11 @@
-name: Release dwk-project
+name: Release todo-backend
 
 on:
   push:
+    paths:
+      - 'part-3/project/todo-backend/**'
+  workflow_dispatch: # Allow manual triggering
+
 jobs:
   build-publish-deploy:
     name: Build, Publish and Deploy
