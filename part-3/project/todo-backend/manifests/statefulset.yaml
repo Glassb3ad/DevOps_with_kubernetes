@@ -42,8 +42,6 @@ spec:
     - metadata:
         name: postgres-data
       spec:
-        strategy:
-          type: Recreate
         accessModes:
           - ReadWriteOnce
         resources:
