@@ -59,8 +59,8 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: dwk-cluster
   GKE_ZONE: europe-north1-b
-  IMAGE: dwk-environments
-  SERVICE: dwk-environments
+  IMAGE: todo-backend
+  SERVICE: todo-backend
   BRANCH: ${{ github.ref_name }}
   DOCKER_BUILD_PATH: part-3/project/todo-backend # Adjust the path as necessary
 
