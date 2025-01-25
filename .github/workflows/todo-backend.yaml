@@ -40,14 +40,16 @@ jobs:
           location: '${{ env.GKE_ZONE }}'
 
       - name: Build
-        run: docker build --tag "gcr.io/$PROJECT_ID/$IMAGE:$BRANCH-$GITHUB_SHA" .
+        run: |
+          cd ${{ env.DOCKER_BUILD_PATH }}
+          docker build --tag "gcr.io/$PROJECT_ID/$IMAGE:$BRANCH-$GITHUB_SHA" .
 
       - name: Set up Kustomize
         uses: imranismail/setup-kustomize@v2.1.0
 
       - name: Deploy
         run: |-
-          cd part-3/project/todo-backend
+          cd ${{ env.DOCKER_BUILD_PATH }}
           kustomize edit set image PROJECT/IMAGE=gcr.io/$PROJECT_ID/$IMAGE:$BRANCH-$GITHUB_SHA
           kustomize build . | kubectl apply -f -
           kubectl rollout status deployment $SERVICE
@@ -60,3 +62,5 @@ env:
   IMAGE: dwk-environments
   SERVICE: dwk-environments
   BRANCH: ${{ github.ref_name }}
+  DOCKER_BUILD_PATH: part-3/project/todo-backend # Adjust the path as necessary
+
