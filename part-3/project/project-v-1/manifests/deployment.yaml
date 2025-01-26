@@ -4,6 +4,8 @@ metadata:
   name: project-v-1
   namespace: dwk-project
 spec:
+  strategy:
+    type: Recreate
   replicas: 1
   selector:
     matchLabels:
