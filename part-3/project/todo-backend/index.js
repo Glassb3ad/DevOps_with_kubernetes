@@ -41,6 +41,11 @@ const PORT = process.env.PORT || 4000;
 const insertTask = async (task) => {
     await client.query('INSERT INTO tasks (task) VALUES ($1)', [task]);
 }
+
+app.get('/', async (req, res) => {
+    res.status(200)
+});
+
 app.get('/tasks', async (req, res) => {
     try {
         const result = await client.query(`SELECT * FROM tasks`);
