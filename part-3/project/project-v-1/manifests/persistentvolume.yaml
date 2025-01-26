@@ -3,6 +3,7 @@ kind: PersistentVolume
 metadata:
   name: project-pv
 spec:
+  storageClassName: project-pv
   capacity:
     storage: 1Gi
   volumeMode: Filesystem
